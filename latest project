@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Room Jitsi</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .room-container { margin-bottom: 20px; }
+  </style>
+  <script src='https://8x8.vc/external_api.js' async></script>
+</head>
+<body>
+
+  <!-- Room 1 -->
+  <div class="room-container">
+    <h3>Room 1</h3>
+    <button class="joinButton" data-room="Room1">Join Room 1</button>
+  </div>
+
+  <!-- Room 2 -->
+  <div class="room-container">
+    <h3>Room 2</h3>
+    <button class="joinButton" data-room="Room2">Join Room 2</button>
+  </div>
+
+  <!-- Room 3 -->
+  <div class="room-container">
+    <h3>Room 3</h3>
+    <button class="joinButton" data-room="Room3">Join Room 3</button>
+  </div>
+
+  <script type="text/javascript">
+    document.querySelectorAll('.joinButton').forEach(button => {
+      button.addEventListener('click', () => {
+        joinRoom(button.getAttribute('data-room'));
+      });
+    });
+
+    function joinRoom(roomName) {
+      const domain = '8x8.vc';
+      const roomUrl = `https://${domain}/${roomName}`;
+      window.open(roomUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
